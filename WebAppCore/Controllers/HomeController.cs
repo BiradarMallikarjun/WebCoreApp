@@ -25,6 +25,7 @@ namespace WebAppCore.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            // throw new Exception();
             var per = _personRepository.GetById(id);
             return View(per);
         }
