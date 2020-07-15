@@ -1,0 +1,17 @@
+﻿.btn{
+    width:75px;
+}
+
+.imageSize {
+    height: 250px;
+    width: auto;
+}
+.imageSizeForDetails {
+    height: 250px;
+    width: auto;
+}
+
+.imageLogo {
+    height: 30px;
+    width: 30px;
+}
