@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using Microsoft.Extensions.Options;
 using System;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WebAppCore.Models
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext
     {
         public AppDBContext(DbContextOptions<AppDBContext> options)
             : base(options)
@@ -19,6 +21,7 @@ namespace WebAppCore.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();            
         }
     }

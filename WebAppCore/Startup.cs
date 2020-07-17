@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Logging;
+using ServiceStack;
 using WebAppCore.Models;
 
 namespace WebAppCore
@@ -29,6 +32,8 @@ namespace WebAppCore
         {
             services.AddControllersWithViews();
             services.AddDbContextPool<AppDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQLConnectionString")));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDBContext>();
             services.AddScoped<IPersonRepository, SQLPersonRepository>();            
         }
 
@@ -43,7 +48,6 @@ namespace WebAppCore
             {
                 app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
-
             }
             app.UseStaticFiles();
 
