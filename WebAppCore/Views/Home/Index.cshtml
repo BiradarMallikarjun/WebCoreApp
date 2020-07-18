@@ -5,14 +5,11 @@
     
 }
 
-<br/>
-<a class="btn btn-success" asp-controller="Home" asp-action="Create">Create</a>
-<hr />
 <div class="card-deck">
     @foreach (var person in Model)
     {
         var photoPath = "~/Images/" + (person.PhotoPath ?? "images.jpg");
-        <div class="card m-3" style="min-width:18rem; max-width:36.5%;">
+        <div class="card m-3" style="min-width:18rem; max-width:30.5%;">
             <div class="card-header">
                 <h3>@person.FirstName @person.LastName</h3>
             </div>
